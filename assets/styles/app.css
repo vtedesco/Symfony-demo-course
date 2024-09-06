@@ -1,0 +1,18 @@
+h2 > a{
+ text-decoration: none;
+ color: inherit;
+}
+h2 > a:hover{
+ text-decoration: underline;
+ color: darkblue;
+}
+
+footer{
+ background-color: #e5f1ff;
+}
+.navbar.bg-light{
+ background-color: #e5f1ff !important;
+}
+footer .container{
+ color: #333333;
+}

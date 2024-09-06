@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News about {{ category.title }}{% endblock %}
+
+{% block body %}
+
+    <h2 class="mt-4" >
+        <a href="{{ path('app_front_home') }}" class="btn btn-light"> &#8678; </a>
+        All the news about #{{ category.title }}
+    </h2>
+
+    <div class="row row-cols-4">
+        {% for news in selectedNews  %}
+            <div class="col">
+                {% include 'front/_news-card.html.twig' with {'news': news} %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="my-4">
+        {{ knp_pagination_render(selectedNews, null, {}, {'align': 'center'}) }}
+    </div>
+
+
+{% endblock %}

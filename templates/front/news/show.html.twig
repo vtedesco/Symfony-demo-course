@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-md-center">
+        <div class="col-lg-6">
+            <h1>{{ news.title }}</h1>
+            <div>
+                {{ news.insertDate|date() }} -
+                {% for category in news.categories %}
+                    <a href="{{ path('app_front_news',{id: category.id}) }}">#{{ category.title }}</a>
+                {% endfor  %}
+                -
+                views {{ news.views|default(0) }}
+            </div>
+            <img src="{{ news.picture }}" alt="new picture">
+
+            <div class="my-4">
+                {{ news.content|nl2br }}
+            </div>
+
+            <h3>Comments</h3>
+            {{ form(form) }}
+
+            {% for comment in news.comments %}
+            <p>
+                #{{ loop.index }} - {{ comment.content }}
+                <a href="{{ path('app_front_comment_delete', {id:comment.id}) }}" class="text-muted"><small>delete</small></a>
+            </p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

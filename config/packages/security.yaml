@@ -1,0 +1,28 @@
+security:
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    password_hashers:
+        Symfony\Component\Security\Core\User\InMemoryUser: plaintext
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    providers:
+        users_in_memory: { memory: null }
+        basic_auth:
+            memory:
+                users:
+                    demo: { password: 'demo', roles: ['ROLE_ADMIN'] }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin:
+            provider: basic_auth
+            http_basic:
+                realm: Secured Area
+            logout:
+                path: logout
+                target: logout
+        main:
+            lazy: true
+            provider: users_in_memory
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>What's new today ?</h1>
+
+{% for category in categories  %}
+<h2 class="mt-4" >
+        <a href="{{ path('app_front_news',{'id': category.id }) }}">#{{ category.title }}</a>
+        <span class="text-muted">({{ category.news|length }})</span>
+</h2>
+<div class="row row-cols-4">
+    {% for news in category.news|slice(0, 3)  %}
+        <div class="col">
+            {% include 'front/_news-card.html.twig' with {'news': news} %}
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+
+<div class="card mb-4">
+    <img class="card-img-top" src="{{ news.picture }}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title"> {{ news.title }}</h5>
+        <p class="card-text">{{ news.shortdesc }}</p>
+        <a href="{{ path('app_front_news_show',{id: news.id}) }}" class="btn btn-primary stretched-link">Read more</a>
+    </div>
+</div>

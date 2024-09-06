@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Delete comment{% endblock %}
+
+{% block body %}
+    You are about to delete your comment : "{{ comment.content }}", are you sure ?
+    {{ form(form) }}
+{% endblock %}
